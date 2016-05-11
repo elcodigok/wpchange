@@ -4,9 +4,13 @@ import os
 import sys
 import ConfigParser
 
-class utils():
-	def __init__(self):
-		pass
+class workDirectory():
+    def __init__(self, path):
+        self.path = path
+
+    def exists(self):
+        return os.path.exists(self.path)
+
 
 class loadConfProject():
     def __init__(self, pathFile):
@@ -29,6 +33,7 @@ def main():
     print a.getSections()
     for i in a.getSections():
         print a.getPathProject(i)
+        print workDirectory(a.getPathProject(i)).exists()
         print a.getLogProject(i)
 
 if __name__ == "__main__":
