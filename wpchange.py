@@ -4,6 +4,18 @@ import os
 import sys
 import ConfigParser
 
+class wordpressStructure(self):
+    def __init__(self):
+        self.wpcontent = "wp-content"
+        self.wpuploads = "wp-content" + "/" + "uploads"
+        self.wpadmin = "wp-admin"
+        self.wpincludes = "wp-includes"
+        self.wpversion = self.wpincludes + "/" + "version.php"
+
+    def getFileVersion(self):
+        return self.wpversion
+
+
 class workDirectory():
     def __init__(self, path):
         self.path = path
