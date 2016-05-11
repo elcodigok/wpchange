@@ -1,0 +1,17 @@
+# FILE CONFIGURATION WPCHANGE
+# ---------------------------
+#
+
+#
+# Tag Name Project
+#
+[name project]
+
+
+# Path where the project file found
+#
+# path = 
+
+# Path where you will store the log file
+#
+# log =
