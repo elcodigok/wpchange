@@ -4,6 +4,19 @@ import os
 import sys
 import ConfigParser
 
+class extractValue():
+    def __init__(self, path_file):
+        self.path_file = path_file
+
+    def getVersionWordPress(self):
+        f = open(self.path_file, 'r')
+        content = f.readlines()
+        f.close()
+        find = "wp_version = '(\d.\d.?\d)'"
+        for i in content:
+            result = re.search(find, i)
+
+
 class wordpressStructure():
     def __init__(self):
         self.wpcontent = "wp-content"
