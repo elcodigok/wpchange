@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import re
 import sys
 import ConfigParser
 
@@ -12,9 +13,11 @@ class extractValue():
         f = open(self.path_file, 'r')
         content = f.readlines()
         f.close()
-        find = "wp_version = '(\d.\d.?\d)'"
+        find = "wp_version = '(\d\.\d\.?\d?)'"
         for i in content:
             result = re.search(find, i)
+            if result != None:
+                return result.group(1)
 
 
 class wordpressStructure():
@@ -58,7 +61,10 @@ def main():
     print a.getSections()
     for i in a.getSections():
         print a.getPathProject(i)
-        print workDirectory(a.getPathProject(i)).exists()
+        if workDirectory(a.getPathProject(i)).exists():
+            print extractValue(
+                a.getPathProject(i) + "/" + wordpressStructure().getFileVersion()
+                ).getVersionWordPress()
         print a.getLogProject(i)
 
 if __name__ == "__main__":
