@@ -4,7 +4,7 @@ import os
 import sys
 import ConfigParser
 
-class wordpressStructure(self):
+class wordpressStructure():
     def __init__(self):
         self.wpcontent = "wp-content"
         self.wpuploads = "wp-content" + "/" + "uploads"
