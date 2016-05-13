@@ -21,15 +21,24 @@ class extractValue():
 
 
 class wordpressStructure():
-    def __init__(self):
-        self.wpcontent = "wp-content"
-        self.wpuploads = "wp-content" + "/" + "uploads"
-        self.wpadmin = "wp-admin"
-        self.wpincludes = "wp-includes"
+    def __init__(self, path_project):
+        self.path_project = path_project
+        self.wpcontent = self.path_project + "/" + "wp-content"
+        self.wpuploads = self.path_project + "/" + "wp-content" + "/" + "uploads"
+        self.wpadmin = self.path_project + "/" + "wp-admin"
+        self.wpincludes = self.path_project + "/" + "wp-includes"
         self.wpversion = self.wpincludes + "/" + "version.php"
+        self.robots = self.path_project + "/" + "robots.txt"
+        self.readme = self.path_project + "/" + "readme.html"
 
     def getFileVersion(self):
         return self.wpversion
+
+    def getFileRobots(self):
+        return workDirectory(self.robots).fileExists()
+
+    def getFileReadme(self):
+        return workDirectory(self.readme).fileExists()
 
 
 class workDirectory():
@@ -39,6 +48,8 @@ class workDirectory():
     def exists(self):
         return os.path.exists(self.path)
 
+    def fileExists(self):
+        return os.path.exists(self.path)
 
 class loadConfProject():
     def __init__(self, pathFile):
@@ -63,9 +74,11 @@ def main():
         print a.getPathProject(i)
         if workDirectory(a.getPathProject(i)).exists():
             print extractValue(
-                a.getPathProject(i) + "/" + wordpressStructure().getFileVersion()
+                wordpressStructure(a.getPathProject(i)).getFileVersion()
                 ).getVersionWordPress()
         print a.getLogProject(i)
+        print wordpressStructure(a.getPathProject(i)).getFileRobots()
+        print wordpressStructure(a.getPathProject(i)).getFileReadme()
 
 if __name__ == "__main__":
 	main()
