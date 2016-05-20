@@ -73,12 +73,21 @@ def main():
     for i in a.getSections():
         print a.getPathProject(i)
         if workDirectory(a.getPathProject(i)).exists():
-            print extractValue(
+            print "WordPress version " + extractValue(
                 wordpressStructure(a.getPathProject(i)).getFileVersion()
                 ).getVersionWordPress()
         print a.getLogProject(i)
-        print wordpressStructure(a.getPathProject(i)).getFileRobots()
-        print wordpressStructure(a.getPathProject(i)).getFileReadme()
+
+        if wordpressStructure(a.getPathProject(i)).getFileRobots():
+            print "The project has the robots.txt file."
+        else:
+            print "The project does not have the robots.txt file."
+
+        if wordpressStructure(a.getPathProject(i)).getFileReadme():
+            print "The project has the readme.html file."
+        else:
+            print "The project does not have the readme.html file."
+
 
 if __name__ == "__main__":
 	main()
