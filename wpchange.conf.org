@@ -15,3 +15,7 @@
 # Path where you will store the log file
 #
 # log =
+
+# File integrity check True or False
+#
+# check =

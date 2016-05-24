@@ -66,6 +66,9 @@ class loadConfProject():
     def getLogProject(self, project):
         return self.Config.get(project, 'log')
 
+    def getCheckProject(self, project):
+        return self.Config.get(project, 'check')
+
 
 def main():
     a = loadConfProject('wpchange.conf')
@@ -87,6 +90,12 @@ def main():
             print "The project has the readme.html file."
         else:
             print "The project does not have the readme.html file."
+
+        if a.getCheckProject(i) == 'True':
+            print "Run Integrity check."
+        else:
+            print "No run integrity check."
+
 
 
 if __name__ == "__main__":
