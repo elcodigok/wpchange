@@ -4,6 +4,8 @@ import os
 import re
 import sys
 import ConfigParser
+import urllib2
+import zipfile
 
 class extractValue():
     def __init__(self, path_file):
@@ -93,8 +95,10 @@ def main():
 
         if a.getCheckProject(i) == 'True':
             print "Run Integrity check."
-        else:
+        elif a.getCheckProject(i) == 'False':
             print "No run integrity check."
+        else:
+            print "Option not valid."
 
 
 
